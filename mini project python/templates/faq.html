@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ</title>
+    <style>
+      body {
+        background-color: #808080; /* Set background color to gray */
+        color: white; /* Set text color to white for better readability */
+        font-family: Arial, sans-serif;
+        padding: 20px; /* Add some padding for better spacing */
+      }
+
+      h1,
+      h2 {
+        color: #000; /* Set heading text color to black */
+      }
+
+      a {
+        color: #00f; /* Set link text color to blue */
+        text-decoration: none; /* Remove underline from links */
+        font-weight: bold; /* Make links bold */
+        margin-top: 20px; /* Add space between paragraphs and links */
+        display: block; /* Make links block elements */
+      }
+
+      a:hover {
+        color: #f00; /* Change link color on hover to red */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Frequently Asked Questions</h1>
+    <h2>Q: How accurate is the translation?</h2>
+    <p>
+      A: The translation provided by the app is based on available online
+      resources and may not always be 100% accurate.
+    </p>
+    <h2>Q: Can I translate entire sentences?</h2>
+    <p>
+      A: Yes, you can translate words, phrases, or entire sentences using the
+      app.
+    </p>
+    <h2>Q: Can I translate between any two languages?</h2>
+    <p>
+      A: The app supports translation between a variety of languages listed on
+      the home page.
+    </p>
+    <audio controls>
+      <source
+        src="{{ url_for('static', filename='faq.mp3') }}"
+        type="audio/mpeg"
+      />
+      Your browser does not support the audio element.
+    </audio>
+    <a href="/">Back to Home</a>
+  </body>
+</html>

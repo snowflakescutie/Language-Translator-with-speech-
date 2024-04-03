@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Translator</title>
+    <style>
+      body {
+        background-color: gray; /* Set background color to blue */
+        color: white; /* Set text color to white for better readability */
+        font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        text-align: center; /* Align content to center */
+      }
+      h1 {
+        font-size: 2em; /* Increase font size */
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px; /* Add some space between heading and form */
+      }
+      select,
+      input,
+      button {
+        font-size: 1.2em; /* Increase font size for form elements */
+        margin-bottom: 10px; /* Add some space between form elements */
+        width: calc(100% - 20px); /* Set width to 100% minus padding */
+        max-width: 400px; /* Limit maximum width */
+        padding: 10px; /* Add padding to form elements */
+      }
+      button {
+        width: calc(
+          2 / 3 * 100% - 20px
+        ); /* Button occupies 2/3 of the screen width */
+      }
+      button,
+      a {
+        display: inline-block; /* Ensure button and link are displayed inline */
+      }
+      select#font_size {
+    margin-bottom: 10px;
+}
+select#font_size {
+    font-size: 1.2em;
+  }  </style>
+  </head>
+  <body>
+    <h1>Welcome to Language Translator</h1>
+    <form action="/translate" method="post">
+      <label for="language_from">From:</label>
+      <select name="language_from" id="language_from">
+        {% for key, value in languages.items() %}
+        <option value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+      </select>
+      <label for="language_to">To:</label>
+      <select name="language_to" id="language_to">
+        {% for key, value in languages.items() %}
+        <option value="{{ key }}">{{ value }}</option>
+        {% endfor %}
+      </select>
+      <label for="word">Word to Translate:</label>
+      <input type="text" id="word" name="word" required />
+      <!-- Add this button for speech recognition -->
+<button type="button" id="startSpeechRecognition">Start Speech Recognition</button>
+
+    
+      <select name="font_size" id="font_size">
+        <option value="1.2em">Small</option>
+        <option value="1.5em">Medium</option>
+        <option value="2em">Large</option>
+      </select>
+      <button type="submit">Translate</button>
+    </form>
+    <a href="/faq">FAQ</a>
+  
+    <!-- JavaScript to adjust font size -->
+    <script>
+      document.getElementById('font_size').addEventListener('change', function() {
+        var fontSize = this.value;
+        document.body.style.fontSize = fontSize;
+      });
+      document.getElementById('startSpeechRecognition').addEventListener('click', function() {
+    // Start speech recognition
+    var recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US'; // Set the language for recognition
+
+    recognition.onresult = function(event) {
+      var speechToTranslate = event.results[0][0].transcript;
+      document.getElementById('word').value = speechToTranslate; // Set the recognized speech as the input value
+    };
+
+    recognition.onerror = function(event) {
+      console.error('Speech recognition error:', event.error);
+    };
+
+    recognition.start();
+  });
+    </script>
+  </body>
+</html>

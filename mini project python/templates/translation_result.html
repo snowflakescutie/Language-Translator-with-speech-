@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translation Result</title>
+    <style>
+      body {
+        background-color: gray; /* Set background color to blue */
+        color: white; /* Set text color to white for better readability */
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 2em;
+        text-align: center;
+      }
+      .translations {
+        margin-bottom: 16px;
+      }
+      .example {
+        margin-bottom: 16px;
+      }
+      select#font_size {
+    margin-bottom: 10px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Translation Result</h1>
+      <div class="translations">
+        <h2>Translations</h2>
+        <ul>
+          {% for translation in translations %}
+          <li>{{ translation }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="examples">
+        <h2>Examples</h2>
+        <ul>
+          {% for example in examples %}
+          <li>{{ example }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <select name="font_size" id="font_size">
+        <option value="1.2em">Small</option>
+        <option value="1.5em">Medium</option>
+        <option value="2em">Large</option>
+      </select>
+      
+    </form>
+    
+  
+    <!-- JavaScript to adjust font size -->
+    <script>
+      document.getElementById('font_size').addEventListener('change', function() {
+        var fontSize = this.value;
+        document.body.style.fontSize = fontSize;
+      });
+    </script>
+
+      <a href="/">Back to Home</a>
+      <a href="/faq">FAQ</a>
+    </div>
+  
+  </body>
+</html>
